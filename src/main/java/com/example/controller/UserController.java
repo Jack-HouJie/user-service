@@ -15,11 +15,11 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  // 如增加返回值注解@ResponseBody 直接把字符串作为响应，而不是html页面
+  // 返回值注解@ResponseBody 直接把字符串作为响应，而不是html页面
   @GetMapping(path = "/add") 
-  public  String addNewUser(@RequestParam String name, @RequestParam String email,
+  public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
-    return userService.add(name, email, password, user);
+    return userService.addNewUser(name, email, password, user);
   }
 
   /**

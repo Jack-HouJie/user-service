@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
 import java.util.List;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
@@ -18,35 +17,36 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public String add(String name, String email, String password, User user) {
+  public String addNewUser(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.get(0) != null) {
       log.warn("用户账号保存失败，邮箱已注册");
+      return "注册失败，此邮箱已注册";
     } else {
       user.setName(name);
       user.setEmail(email);
       user.setPassword(password);
       userRepository.save(user);
-      log.warn(user.toString() + "保存至数据库");
+      log.info(user.toString() + "保存至数据库");
+      return "注册成功";
     }
-    return "index";
   }
 
   public String logIn(String email, String password, Model model) {
     List<User> users = userRepository.findByEmail(email);
     // 如果数据库中未查到该账号:
     if (users.get(0) == null) {
-      log.warn("attempting to log in with the non-existed account");
+      log.warn("账号不存在，登陆失败");
     } else {
       User user = users.get(0);
       if (user.getPassword().equals(password)) {
         // 如果密码与邮箱配对成功:
         model.addAttribute("name", user.getName());
-        log.warn(user.toString() + " logged in");
+        log.warn(user.toString() + " 登陆成功 ");
       } else {
         // 如果密码与邮箱不匹配:
         model.addAttribute("name", "logging failed");
-        log.warn(user.toString() + " failed to log in");
+        log.warn(user.toString() + " 登陆失败 ");
       }
     }
     return "index";
