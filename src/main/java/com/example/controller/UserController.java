@@ -45,8 +45,7 @@ public class UserController {
    * @return
    */
   @GetMapping(path = "/")
-  public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String namel) {
+  public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String name) {
     return "index";
   }
-
 }

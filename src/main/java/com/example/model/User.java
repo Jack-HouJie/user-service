@@ -14,6 +14,7 @@ public class User {
   private String name;
   private String email;
   private String password;
+  private String type;
 
   @Override
   public String toString() {
@@ -51,5 +52,12 @@ public class User {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+  public String getType() {
+    return this.type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 }

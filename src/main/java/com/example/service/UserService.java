@@ -26,6 +26,7 @@ public class UserService {
       user.setName(name);
       user.setEmail(email);
       user.setPassword(password);
+      user.setType("user");
       userRepository.save(user);
       log.info(user.toString() + "保存至数据库");
       return "注册成功";
@@ -42,6 +43,7 @@ public class UserService {
       if (user.getPassword().equals(password)) {
         // 如果密码与邮箱配对成功:
         model.addAttribute("name", user.getName());
+        model.addAttribute("type", user.getType());
         log.warn(user.toString() + " 登陆成功 ");
       } else {
         // 如果密码与邮箱不匹配:
