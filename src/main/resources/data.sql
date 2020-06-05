@@ -6,4 +6,4 @@
 
 
 truncate table user;
-insert into user (email, password) values ('admin@outlook.com', '123456');
+insert into user (email, password, name) values ('admin@outlook.com', '123456', 'admin');

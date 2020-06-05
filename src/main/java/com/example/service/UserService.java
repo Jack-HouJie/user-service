@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
 import java.util.List;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
@@ -17,7 +18,7 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public String add(String name, String email, String password, User user) {
+  public @ResponseBody String add(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.get(0) != null) {
       log.warn("用户账号保存失败，邮箱已注册");
