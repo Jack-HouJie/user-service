@@ -1,4 +1,7 @@
-package com.example;
+package com.example.controller;
+
+import com.example.model.UserRepository;
+import com.example.model.User;
 
 import java.util.List;
 
