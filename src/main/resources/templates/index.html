@@ -11,7 +11,8 @@
 
 <body>
   <br></br>
-  <p th:text="'Hello, ' + ${name} + '!'" />
+  <p th:text="'用户名:' + ${name} " />
+  <p th:text="'帐号类型： ' + ${type} " />
   <div class="add">
     <h2>注册新账号</h2>
     <form action="/add" method="GET">
