@@ -15,12 +15,11 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  @GetMapping(path = "/add") // Map ONLY GET REQUESTs.
-  public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
+  // 如增加返回值注解@ResponseBody 直接把字符串作为响应，而不是html页面
+  @GetMapping(path = "/add") 
+  public  String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
-    // @ResponseBody means the returned String is a response, not a view name.
-    String str = userService.add(name, email, password, user);
-    return str;
+    return userService.add(name, email, password, user);
   }
 
   /**

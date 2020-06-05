@@ -18,19 +18,18 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public @ResponseBody String add(String name, String email, String password, User user) {
+  public String add(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.get(0) != null) {
       log.warn("用户账号保存失败，邮箱已注册");
-      return "注册失败，此邮箱已注册";
     } else {
       user.setName(name);
       user.setEmail(email);
       user.setPassword(password);
       userRepository.save(user);
-      log.info(user.toString() + "保存至数据库");
-      return "注册成功";
+      log.warn(user.toString() + "保存至数据库");
     }
+    return "index";
   }
 
   public String logIn(String email, String password, Model model) {
