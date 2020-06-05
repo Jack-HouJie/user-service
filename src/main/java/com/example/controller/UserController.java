@@ -19,7 +19,8 @@ public class UserController {
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
     // @ResponseBody means the returned String is a response, not a view name.
-    return userService.add(name, email, password, user);
+    String str = userService.add(name, email, password, user);
+    return str;
   }
 
   /**
