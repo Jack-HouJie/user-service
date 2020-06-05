@@ -19,7 +19,7 @@ public class User {
   @Override
   public String toString() {
     return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", email='" + getEmail() + "'"
-        + ", password='" + getPassword() + "'" + "}";
+        + ", password='" + getPassword() + "'" + ",type='" + getType() + "'}";
   }
 
   public String getPassword() {
@@ -53,6 +53,7 @@ public class User {
   public void setEmail(String email) {
     this.email = email;
   }
+
   public String getType() {
     return this.type;
   }
