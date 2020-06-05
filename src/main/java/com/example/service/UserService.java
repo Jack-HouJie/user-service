@@ -19,7 +19,7 @@ public class UserService {
 
   public String addNewUser(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
-    if (users != null) {
+    if (users.size() != 0) {
       log.warn("用户账号保存失败，邮箱已注册");
       return "注册失败，此邮箱已注册";
     } else {
@@ -35,7 +35,7 @@ public class UserService {
   public String logIn(String email, String password, Model model) {
     List<User> users = userRepository.findByEmail(email);
     // 如果数据库中未查到该账号:
-    if (users == null) {
+    if (users.size() == 0) {
       log.warn("账号不存在，登陆失败");
     } else {
       User user = users.get(0);
