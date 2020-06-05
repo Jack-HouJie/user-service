@@ -16,7 +16,9 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  // 返回值注解@ResponseBody 直接把字符串作为响应，而不是html页面
+  
+  // 用户注册：验证邮箱是否已经注册
+  // 返回值注解@ResponseBody 直接把字符串作为响应内容
   @GetMapping(path = "/add") 
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
@@ -24,11 +26,11 @@ public class UserController {
   }
 
   /**
-   * 登陆方法, 用户输入邮箱和密码, 查询数据库检验是否有该账户,如果有, 返回原先页面 ,登陆成功。
+   * 用户登陆：验证用户名是否存在、密码是否正确
    * 
    * @param email    用户邮箱
    * @param password 用户密码
-   * @param model    Spring MVC中的Model，用来储存经过controller处理后的信息，再由View层渲染 得到前端页面。
+   * @param model    Model层存储处理结果，再由View层渲染。
    * @return
    */
   @GetMapping(path = "/login")
@@ -37,7 +39,7 @@ public class UserController {
   }
 
   /**
-   * 域名的根目录，然后返回的“index”会映射到 java/resources/templates/index.html文件。
+   * 域名根目录进入index.html
    * 
    * @param name
    * @return
