@@ -36,9 +36,6 @@ public class User implements Serializable{
     return this.Id;
   }
 
-  // public void setId(Long id) {
-  //   this.Id = Id;
-  // }
 
   public String getName() {
     return this.name;

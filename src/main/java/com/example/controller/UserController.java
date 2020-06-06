@@ -22,8 +22,16 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-  // 用户注册：验证邮箱是否已经注册
-  // 返回值注解@ResponseBody 直接把字符串作为显示内容
+
+  /**
+   * 用户注册：验证用户名是否已注册，未注册时注册
+   * 
+   * @param email    用户邮箱
+   * @param password 用户密码
+   * @param name    用户名
+   * @param user    用户实例
+   * @return @ResponseBody直接把结果字符串作为响应体
+   */
   @RequestMapping(value="/add", method = RequestMethod.POST)
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
@@ -36,14 +44,19 @@ public class UserController {
    * @param email    用户邮箱
    * @param password 用户密码
    * @param model    Model层存储处理结果，再由View层渲染。
-   * @return
+   * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value="/login", method = RequestMethod.POST)
   public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password, Model model) {
     return userService.logIn(email, password, model);
   } 
 
-
+  /**
+   * 用户查询：返回指定ID的用户的实例
+   * 
+   * @param userId    用户ID
+   * @return 指定ID的实例（JSON格式）
+   */
   @RequestMapping(value="/{userId}", method = RequestMethod.GET)
   public User getUsers(@PathVariable(name = "userId") Long userId){
     return userService.findOne(userId);
