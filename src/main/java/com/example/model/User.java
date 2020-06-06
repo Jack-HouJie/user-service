@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 @Entity
-public class User {
+public class User implements Serializable{
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+  private Long Id;
+
   private String name;
   private String email;
   private String password;
@@ -30,13 +32,13 @@ public class User {
     this.password = password;
   }
 
-  public Integer getId() {
-    return this.id;
+  public Long getId() {
+    return this.Id;
   }
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+  // public void setId(Long id) {
+  //   this.Id = Id;
+  // }
 
   public String getName() {
     return this.name;

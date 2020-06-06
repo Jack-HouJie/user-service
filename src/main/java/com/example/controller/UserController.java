@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
-  
+
   @Autowired
   private UserService userService;
 
-  
   // 用户注册：验证邮箱是否已经注册
-  // 返回值注解@ResponseBody 直接把字符串作为响应内容
-  @PostMapping(path = "/add") 
+  // 返回值注解@ResponseBody 直接把字符串作为显示内容
+  @PostMapping(path = "/add")
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
     return userService.addNewUser(name, email, password, user);
@@ -49,4 +48,11 @@ public class UserController {
   public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String name) {
     return "index";
   }
+
+  @GetMapping("/user/{userId}")
+  public @ResponseBody User getUsers(@RequestParam(name = "userId") Long userId){
+    return userService.findOne(userId);
+  }
+
+
 }
