@@ -45,7 +45,7 @@ public class UserController {
    * @param name
    * @return
    */
-  @PostMapping(path = "/")
+  @GetMapping(path = "/")
   public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String name) {
     return "index";
   }
