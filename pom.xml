@@ -62,15 +62,6 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- 添加 -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>io.zipkin.java</groupId>
-      <artifactId>zipkin-server</artifactId>
-     </dependency>
   </dependencies>
 
   <dependencyManagement>

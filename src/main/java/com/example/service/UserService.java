@@ -9,7 +9,6 @@ import org.slf4j.Logger;
 import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
 import java.util.List;
-import java.util.Collection;
 
 @Service
 public class UserService {
