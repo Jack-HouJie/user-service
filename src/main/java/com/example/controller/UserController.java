@@ -52,7 +52,7 @@ public class UserController {
   @RequestMapping(value="/login", method = RequestMethod.POST)
   public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password, Model model) {
     return userService.logIn(email, password, model);
-  }
+  } 
 
 
   @RequestMapping(value="/{userId}", method = RequestMethod.GET)
