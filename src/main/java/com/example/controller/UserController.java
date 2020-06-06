@@ -22,7 +22,6 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-
     /**
    * 域名根目录进入index.html
    * 
@@ -51,7 +50,7 @@ public class UserController {
    * @return
    */
   @RequestMapping(value="/login", method = RequestMethod.POST)
-  public String logIn(@RequestParam String email, @RequestParam String password, Model model) {
+  public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password, Model model) {
     return userService.logIn(email, password, model);
   }
 

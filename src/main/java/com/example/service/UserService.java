@@ -22,7 +22,7 @@ public class UserService {
     List<User> users = userRepository.findByEmail(email);
     if (users.size() != 0) {
       log.warn("用户账号保存失败，邮箱已注册");
-      return "注册失败，此邮箱已注册";
+      return "false";
     } else {
       user.setName(name);
       user.setEmail(email);
@@ -30,7 +30,7 @@ public class UserService {
       user.setType("user");
       userRepository.save(user);
       log.info(user.toString() + "保存至数据库");
-      return "注册成功";
+      return "true";
     }
   }
 
@@ -39,6 +39,7 @@ public class UserService {
     // 如果数据库中未查到该账号:
     if (users.size() == 0) {
       log.warn("账号不存在，登陆失败");
+      return "false";
     } else {
       User user = users.get(0);
       if (user.getPassword().equals(password)) {
@@ -46,13 +47,15 @@ public class UserService {
         model.addAttribute("name", user.getName());
         model.addAttribute("type", user.getType());
         log.warn(user.toString() + " 登陆成功 ");
+        return "true";
       } else {
         // 如果密码与邮箱不匹配:
         model.addAttribute("name", "logging failed");
         log.warn(user.toString() + " 登陆失败 ");
+        return "false";
       }
     }
-    return "index";
+    
   }
 
   public User findOne(Long userId){
