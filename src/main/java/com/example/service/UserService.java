@@ -16,7 +16,7 @@ public class UserService {
   
   @Autowired
   private UserRepository userRepository;
-
+  
   public String addNewUser(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.size() != 0) {

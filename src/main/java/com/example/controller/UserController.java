@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,7 +20,7 @@ public class UserController {
   
   // 用户注册：验证邮箱是否已经注册
   // 返回值注解@ResponseBody 直接把字符串作为响应内容
-  @GetMapping(path = "/add") 
+  @PostMapping(path = "/add") 
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, User user) {
     return userService.addNewUser(name, email, password, user);
@@ -33,7 +34,7 @@ public class UserController {
    * @param model    Model层存储处理结果，再由View层渲染。
    * @return
    */
-  @GetMapping(path = "/login")
+  @PostMapping(path = "/login")
   public String logIn(@RequestParam String email, @RequestParam String password, Model model) {
     return userService.logIn(email, password, model);
   }
@@ -44,7 +45,7 @@ public class UserController {
    * @param name
    * @return
    */
-  @GetMapping(path = "/")
+  @PostMapping(path = "/")
   public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String name) {
     return "index";
   }
