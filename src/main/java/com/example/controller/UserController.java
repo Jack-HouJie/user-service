@@ -22,17 +22,6 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-    /**
-   * 域名根目录进入index.html
-   * 
-   * @param name
-   * @return
-   */
-  @RequestMapping(method = RequestMethod.GET)
-  public String welcomePage(@RequestParam(name = "name", required = false, defaultValue = "World") String name) {
-    return "index";
-  }
-
   // 用户注册：验证邮箱是否已经注册
   // 返回值注解@ResponseBody 直接把字符串作为显示内容
   @RequestMapping(value="/add", method = RequestMethod.POST)
