@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 @Entity
 public class User implements Serializable{
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long Id;
@@ -35,7 +37,6 @@ public class User implements Serializable{
   public Long getId() {
     return this.Id;
   }
-
 
   public String getName() {
     return this.name;
