@@ -20,6 +20,7 @@ public class UserService {
   public String addNewUser(String name, String email, String password, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.size() != 0) {
+      // 邮箱已注册时：
       log.warn("用户账号保存失败，邮箱已注册");
       return "false";
     } else {
@@ -35,26 +36,25 @@ public class UserService {
 
   public String logIn(String email, String password, Model model) {
     List<User> users = userRepository.findByEmail(email);
-    // 如果数据库中未查到该账号:
     if (users.size() == 0) {
+      // 帐号不存在时:
       log.warn("账号不存在，登陆失败");
       return "false";
     } else {
       User user = users.get(0);
       if (user.getPassword().equals(password)) {
-        // 如果密码与邮箱配对成功:
+        // 密码正确时:
         model.addAttribute("name", user.getName());
         model.addAttribute("type", user.getType());
         log.warn(user.toString() + " 登陆成功 ");
         return "true";
       } else {
-        // 如果密码与邮箱不匹配:
+        // 密码错误时:
         model.addAttribute("name", "logging failed");
         log.warn(user.toString() + " 登陆失败 ");
         return "false";
       }
     }
-    
   }
 
   public User findOne(Long userId){

@@ -19,7 +19,6 @@ public class UserController {
   @Autowired
   private UserService userService;
 
-
   /**
    * 用户注册：验证用户名是否已注册，未注册时注册
    * 
@@ -58,5 +57,4 @@ public class UserController {
   public User getUsers(@PathVariable(name = "userId") Long userId){
     return userService.findOne(userId);
   }
-
 }
