@@ -26,6 +26,7 @@ public class UserController {
    * @param password 用户密码
    * @param name     用户名
    * @param user     用户实例
+   * ······
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -40,7 +41,7 @@ public class UserController {
    * 
    * @param email    用户邮箱
    * @param password 用户密码
-   * @param model    Model层存储处理结果，再由View层渲染。
+   * ······
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -48,6 +49,14 @@ public class UserController {
     return userService.logIn(email, password);
   }
 
+    /**
+   * 设置用户信息：更新已有用户信息
+   * 
+   * @param email    用户邮箱
+   * @param password 用户密码
+   * ······
+   * @return @ResponseBody直接把结果字符串作为响应体
+   */
   @RequestMapping(value = "/set", method = RequestMethod.POST)
   public @ResponseBody String setUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, @RequestParam String gender, @RequestParam String age,
