@@ -31,22 +31,20 @@ public class User implements Serializable {
         + ",occupation='" + getOccupation() + ",zipcode='" + getZipcode() + "'}";
   }
 
+  public Long getId() {
+    return this.Id;
+  }
+
   public String getPassword() {
     return this.password;
   }
-
   public void setPassword(String password) {
     this.password = password;
-  }
-
-  public Long getId() {
-    return this.Id;
   }
 
   public String getName() {
     return this.name;
   }
-
   public void setName(String name) {
     this.name = name;
   }
@@ -54,7 +52,6 @@ public class User implements Serializable {
   public String getEmail() {
     return this.email;
   }
-
   public void setEmail(String email) {
     this.email = email;
   }
@@ -62,7 +59,6 @@ public class User implements Serializable {
   public String getType() {
     return this.type;
   }
-
   public void setType(String type) {
     this.type = type;
   }
@@ -70,7 +66,6 @@ public class User implements Serializable {
   public String getGender() {
     return this.gender;
   }
-
   public void setGender(String gender) {
     this.gender = gender;
   }
@@ -78,7 +73,6 @@ public class User implements Serializable {
   public String getAge() {
     return this.age;
   }
-
   public void setAge(String age) {
     this.age = age;
   }
@@ -86,7 +80,6 @@ public class User implements Serializable {
   public String getOccupation() {
     return this.occupation;
   }
-
   public void setOccupation(String occupation) {
     this.occupation = occupation;
   }
@@ -94,9 +87,7 @@ public class User implements Serializable {
   public String getZipcode() {
     return this.zipcode;
   }
-
   public void setZipcode(String zipcode) {
     this.zipcode = zipcode;
   }
-
 }
