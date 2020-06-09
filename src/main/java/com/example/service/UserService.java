@@ -17,6 +17,21 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
+  public String setUser(String name, String email, String password, String gender, String age, String occupation,
+      String zipcode, User user) {
+    user.setName(name);
+    user.setEmail(email);
+    user.setPassword(password);
+    user.setType("user");
+    user.setGender(gender);
+    user.setAge(age);
+    user.setOccupation(occupation);
+    user.setZipcode(zipcode);
+    userRepository.save(user);
+    log.info(user.toString() + "保存至数据库");
+    return "true";
+  }
+
   public String addUser(String name, String email, String password, String gender, String age, String occupation,
       String zipcode, User user) {
     List<User> users = userRepository.findByEmail(email);
@@ -25,17 +40,7 @@ public class UserService {
       log.warn("用户账号保存失败，邮箱已注册");
       return "false";
     } else {
-      user.setName(name);
-      user.setEmail(email);
-      user.setPassword(password);
-      user.setType("user");
-      user.setGender(gender);
-      user.setAge(age);
-      user.setOccupation(occupation);
-      user.setZipcode(zipcode);
-      userRepository.save(user);
-      log.info(user.toString() + "保存至数据库");
-      return "true";
+      return setUser(name, email, password, gender, age, occupation, zipcode, user);
     }
   }
 

@@ -48,6 +48,13 @@ public class UserController {
     return userService.logIn(email, password);
   }
 
+  @RequestMapping(value = "/set", method = RequestMethod.POST)
+  public @ResponseBody String setUser(@RequestParam String name, @RequestParam String email,
+      @RequestParam String password, @RequestParam String gender, @RequestParam String age,
+      @RequestParam String occupation, @RequestParam String zipcode, User user) {
+    return userService.setUser(name, email, password, gender, age, occupation, zipcode, user);
+  }
+
   /**
    * 用户查询：返回指定ID的用户的实例
    * 
