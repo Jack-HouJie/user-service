@@ -6,7 +6,6 @@ import com.example.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
-import org.springframework.ui.Model;
 import org.slf4j.LoggerFactory;
 import java.util.List;
 
