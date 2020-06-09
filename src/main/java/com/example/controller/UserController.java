@@ -24,8 +24,7 @@ public class UserController {
    * @param email    用户邮箱
    * @param password 用户密码
    * @param name     用户名
-   * @param user     用户实例
-   * ······
+   * @param user     用户实例 ······
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -39,8 +38,7 @@ public class UserController {
    * 用户登陆：验证用户名是否存在、密码是否正确
    * 
    * @param email    用户邮箱
-   * @param password 用户密码
-   * ······
+   * @param password 用户密码 ······
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -48,19 +46,18 @@ public class UserController {
     return userService.logIn(email, password);
   }
 
-    /**
+  /**
    * 设置用户信息：更新已有用户信息
    * 
    * @param email    用户邮箱
-   * @param password 用户密码
-   * ······
+   * @param password 用户密码 ······
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/set", method = RequestMethod.POST)
-  public @ResponseBody String setUser(@RequestParam String name, @RequestParam String email,
+  public @ResponseBody String setUser(@RequestParam Long userId, @RequestParam String name, @RequestParam String email,
       @RequestParam String password, @RequestParam String gender, @RequestParam String age,
-      @RequestParam String occupation, @RequestParam String zipcode, User user) {
-    return userService.setUser(name, email, password, gender, age, occupation, zipcode, user);
+      @RequestParam String occupation, @RequestParam String zipcode) {
+    return userService.setUser(userId, name, email, password, gender, age, occupation, zipcode);
   }
 
   /**

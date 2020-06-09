@@ -16,8 +16,9 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public String setUser(String name, String email, String password, String gender, String age, String occupation,
-      String zipcode, User user) {
+  public String setUser(Long userId, String name, String email, String password, String gender, String age,
+      String occupation, String zipcode) {
+    User user = userRepository.findOne(userId);
     user.setName(name);
     user.setEmail(email);
     user.setPassword(password);
@@ -26,8 +27,7 @@ public class UserService {
     user.setAge(age);
     user.setOccupation(occupation);
     user.setZipcode(zipcode);
-    userRepository.save(user);
-    log.info(user.toString() + "保存至数据库");
+    log.info(user.toString() + "数据已更新");
     return "true";
   }
 
@@ -39,7 +39,17 @@ public class UserService {
       log.warn("用户账号保存失败，邮箱已注册");
       return "false";
     } else {
-      return setUser(name, email, password, gender, age, occupation, zipcode, user);
+      user.setName(name);
+      user.setEmail(email);
+      user.setPassword(password);
+      user.setType("user");
+      user.setGender(gender);
+      user.setAge(age);
+      user.setOccupation(occupation);
+      user.setZipcode(zipcode);
+      userRepository.save(user);
+      log.info(user.toString() + "保存至数据库");
+      return "true";
     }
   }
 
