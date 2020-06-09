@@ -17,7 +17,7 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public String addNewUser(String name, String email, String password, String gender, String age, String occupation,
+  public String addUser(String name, String email, String password, String gender, String age, String occupation,
       String zipcode, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.size() != 0) {
@@ -62,7 +62,7 @@ public class UserService {
     }
   }
 
-  public User findOne(Long userId) {
+  public User getUser(Long userId) {
     return userRepository.findOne(userId);
   }
 }

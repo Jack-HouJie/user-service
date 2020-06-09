@@ -29,10 +29,10 @@ public class UserController {
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/add", method = RequestMethod.POST)
-  public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
+  public @ResponseBody String addUser(@RequestParam String name, @RequestParam String email,
       @RequestParam String password, @RequestParam String gender, @RequestParam String age,
       @RequestParam String occupation, @RequestParam String zipcode, User user) {
-    return userService.addNewUser(name, email, password, gender, age, occupation, zipcode, user);
+    return userService.addUser(name, email, password, gender, age, occupation, zipcode, user);
   }
 
   /**
@@ -55,7 +55,7 @@ public class UserController {
    * @return 指定ID的实例（JSON格式）
    */
   @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
-  public User getUsers(@PathVariable(name = "userId") Long userId) {
-    return userService.findOne(userId);
+  public User getUser(@PathVariable(name = "userId") Long userId) {
+    return userService.getUser(userId);
   }
 }
