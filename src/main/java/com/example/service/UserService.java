@@ -52,7 +52,7 @@ public class UserService {
         return "true";
       } else {
         // 密码错误时:
-        log.warn(user.toString() + " 登陆失败 ");
+        log.warn(user.toString() + " 密码错误，登陆失败 ");
         return "false";
       }
     }
