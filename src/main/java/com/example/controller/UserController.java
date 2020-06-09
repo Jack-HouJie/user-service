@@ -47,20 +47,6 @@ public class UserController {
   }
 
   /**
-   * 设置用户信息：更新已有用户信息
-   * 
-   * @param email    用户邮箱
-   * @param password 用户密码 ······
-   * @return @ResponseBody直接把结果字符串作为响应体
-   */
-  @RequestMapping(value = "/set", method = RequestMethod.POST)
-  public @ResponseBody String setUser(@RequestParam Long userId, @RequestParam String name, @RequestParam String email,
-      @RequestParam String password, @RequestParam String gender, @RequestParam String age,
-      @RequestParam String occupation, @RequestParam String zipcode) {
-    return userService.setUser(userId, name, email, password, gender, age, occupation, zipcode);
-  }
-
-  /**
    * 用户查询：返回指定ID的用户的实例
    * 
    * @param userId 用户ID

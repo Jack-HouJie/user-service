@@ -16,21 +16,6 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public String setUser(Long userId, String name, String email, String password, String gender, String age,
-      String occupation, String zipcode) {
-    User user = userRepository.findOne(userId);
-    user.setName(name);
-    user.setEmail(email);
-    user.setPassword(password);
-    user.setType("user");
-    user.setGender(gender);
-    user.setAge(age);
-    user.setOccupation(occupation);
-    user.setZipcode(zipcode);
-    log.info(user.toString() + "数据已更新");
-    return "true";
-  }
-
   public String addUser(String name, String email, String password, String gender, String age, String occupation,
       String zipcode, User user) {
     List<User> users = userRepository.findByEmail(email);
