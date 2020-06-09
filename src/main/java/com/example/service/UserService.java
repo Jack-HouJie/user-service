@@ -13,11 +13,12 @@ import java.util.List;
 @Service
 public class UserService {
   private static final Logger log = LoggerFactory.getLogger(UserService.class);
-  
+
   @Autowired
   private UserRepository userRepository;
-  
-  public String addNewUser(String name, String email, String password, User user) {
+
+  public String addNewUser(String name, String email, String password, String gender, String age, String occupation,
+      String zipcode, User user) {
     List<User> users = userRepository.findByEmail(email);
     if (users.size() != 0) {
       // 邮箱已注册时：
@@ -28,6 +29,10 @@ public class UserService {
       user.setEmail(email);
       user.setPassword(password);
       user.setType("user");
+      user.setGender(gender);
+      user.setAge(age);
+      user.setOccupation(occupation);
+      user.setZipcode(zipcode);
       userRepository.save(user);
       log.info(user.toString() + "保存至数据库");
       return "true";
@@ -57,7 +62,7 @@ public class UserService {
     }
   }
 
-  public User findOne(Long userId){
+  public User findOne(Long userId) {
     return userRepository.findOne(userId);
   }
 }

@@ -24,14 +24,15 @@ public class UserController {
    * 
    * @param email    用户邮箱
    * @param password 用户密码
-   * @param name    用户名
-   * @param user    用户实例
+   * @param name     用户名
+   * @param user     用户实例
    * @return @ResponseBody直接把结果字符串作为响应体
    */
-  @RequestMapping(value="/add", method = RequestMethod.POST)
+  @RequestMapping(value = "/add", method = RequestMethod.POST)
   public @ResponseBody String addNewUser(@RequestParam String name, @RequestParam String email,
-      @RequestParam String password, User user) {
-    return userService.addNewUser(name, email, password, user);
+      @RequestParam String password, @RequestParam String gender, @RequestParam String age,
+      @RequestParam String occupation, @RequestParam String zipcode, User user) {
+    return userService.addNewUser(name, email, password, gender, age, occupation, zipcode, user);
   }
 
   /**
@@ -42,19 +43,19 @@ public class UserController {
    * @param model    Model层存储处理结果，再由View层渲染。
    * @return @ResponseBody直接把结果字符串作为响应体
    */
-  @RequestMapping(value="/login", method = RequestMethod.POST)
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
   public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password, Model model) {
     return userService.logIn(email, password, model);
-  } 
+  }
 
   /**
    * 用户查询：返回指定ID的用户的实例
    * 
-   * @param userId    用户ID
+   * @param userId 用户ID
    * @return 指定ID的实例（JSON格式）
    */
-  @RequestMapping(value="/{userId}", method = RequestMethod.GET)
-  public User getUsers(@PathVariable(name = "userId") Long userId){
+  @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
+  public User getUsers(@PathVariable(name = "userId") Long userId) {
     return userService.findOne(userId);
   }
 }

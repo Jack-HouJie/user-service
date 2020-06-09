@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class User implements Serializable{
+public class User implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @Id
@@ -19,11 +19,16 @@ public class User implements Serializable{
   private String email;
   private String password;
   private String type;
+  private String gender;
+  private String age;
+  private String occupation;
+  private String zipcode;
 
   @Override
   public String toString() {
     return "{" + " id='" + getId() + "'" + ", name='" + getName() + "'" + ", email='" + getEmail() + "'"
-        + ", password='" + getPassword() + "'" + ",type='" + getType() + "'}";
+        + ", password='" + getPassword() + "'" + ",type='" + getType() + ",gender='" + getGender() + ",age='" + getAge()
+        + ",occupation='" + getOccupation() + ",zipcode='" + getZipcode() + "'}";
   }
 
   public String getPassword() {
@@ -61,4 +66,37 @@ public class User implements Serializable{
   public void setType(String type) {
     this.type = type;
   }
+
+  public String getGender() {
+    return this.gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
+  public String getAge() {
+    return this.age;
+  }
+
+  public void setAge(String age) {
+    this.age = age;
+  }
+
+  public String getOccupation() {
+    return this.occupation;
+  }
+
+  public void setOccupation(String occupation) {
+    this.occupation = occupation;
+  }
+
+  public String getZipcode() {
+    return this.zipcode;
+  }
+
+  public void setZipcode(String zipcodeype) {
+    this.type = zipcode;
+  }
+
 }
