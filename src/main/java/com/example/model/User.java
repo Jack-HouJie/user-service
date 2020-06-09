@@ -95,8 +95,8 @@ public class User implements Serializable {
     return this.zipcode;
   }
 
-  public void setZipcode(String zipcodeype) {
-    this.type = zipcode;
+  public void setZipcode(String zipcode) {
+    this.zipcode = zipcode;
   }
 
 }
