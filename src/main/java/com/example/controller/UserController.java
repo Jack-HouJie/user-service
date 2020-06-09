@@ -44,8 +44,8 @@ public class UserController {
    * @return @ResponseBody直接把结果字符串作为响应体
    */
   @RequestMapping(value = "/login", method = RequestMethod.POST)
-  public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password, Model model) {
-    return userService.logIn(email, password, model);
+  public @ResponseBody String logIn(@RequestParam String email, @RequestParam String password) {
+    return userService.logIn(email, password);
   }
 
   /**
